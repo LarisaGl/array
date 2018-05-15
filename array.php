@@ -10,46 +10,48 @@ $continents= array(
 	"Antarctica" => array ("Ursus maritimus", "Spheniscidae"),
 	);
 
-	$word_count=[];
-	$animal=[];
+	$count=[];
 	$full_array=[];
 
 	foreach ($continents as $key => $value) {
+		$cont=$key;
 		foreach ($value as $animal) {
-			$word_count=str_word_count($animal, 1);
-			$count=count($word_count);
+			$count=str_word_count($animal);
 			if ($count==2) {
-				foreach ($word_count as $v) {
-					$full_array[]=$v;					
-				}
+				$full_array[]=$animal;
 			}
 		}
 	}
 
-	$odd=[];
-	$even=[];
+	echo "<pre>";
+	print_r($full_array);
+	echo "</pre>";
+
+	$first=[];
+	$second=[];
+	$exp=[];
 
 	foreach ($full_array as $key => $value) {
-		if ($key % 2 !=0)
-			$odd[]=$value;
-		else $even[]=$value;
+		$exp=explode(" ", $value);
+		$first[]=$exp[0];
+		$second[]=$exp[1];
 	}
 
-	shuffle($odd);
-	shuffle($even);
+	shuffle($first);
+	shuffle($second);
 
 	echo "<pre>";
-	print_r($even);
+	print_r($first);
 	echo "</pre>";	
 
 	echo "<pre>";
-	print_r($odd);
+	print_r($second);
 	echo "</pre>";
 
 	$finish=[];
 
-	foreach ($even as $key => $value) {
-		$finish[$key]=$value." ".$odd[$key];
+	foreach ($first as $key => $value) {
+		$finish[$key]=$value." ".$second[$key];
 	}
 
 	echo "<pre>";
