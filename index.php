@@ -53,5 +53,8 @@ $continents= array(
 	echo "<pre>";
 	print_r($finish);
 	echo "</pre>";
+
+	$imp=implode(",", $finish);
+	echo $imp;
 	
 ?>
