@@ -12,6 +12,9 @@ $continents= array(
 
 	$count=[];
 	$full_array=[];
+	$first=[];
+	$second=[];
+	$exp=[];
 
 	foreach ($continents as $key => $value) {
 		$cont=$key;
@@ -19,6 +22,9 @@ $continents= array(
 			$count=str_word_count($animal);
 			if ($count==2) {
 				$full_array[]=$animal;
+				$exp=explode(" ", $animal);
+				$first[]=$exp[0];
+				$second[]=$exp[1];
 			}
 		}
 	}
@@ -26,16 +32,6 @@ $continents= array(
 	echo "<pre>";
 	print_r($full_array);
 	echo "</pre>";
-
-	$first=[];
-	$second=[];
-	$exp=[];
-
-	foreach ($full_array as $key => $value) {
-		$exp=explode(" ", $value);
-		$first[]=$exp[0];
-		$second[]=$exp[1];
-	}
 
 	shuffle($first);
 	shuffle($second);
@@ -57,5 +53,5 @@ $continents= array(
 	echo "<pre>";
 	print_r($finish);
 	echo "</pre>";
-
+	
 ?>
